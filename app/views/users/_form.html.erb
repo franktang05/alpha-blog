@@ -1,0 +1,33 @@
+
+<% if @user.errors.any? %>
+  <h2>The following errors prevented the user from being saved </h2>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @user, local: true) do |f| %>
+  <p>
+    <%= f.label :username %></br>
+    <%= f.text_field :username, placeholder: "Enter a username" %>
+  </p>
+
+  <p>
+    <%= f.label :email %></br>
+    <%= f.email_field :email, placeholder: "Enter your email address" %>
+  </p>
+
+  <p>
+    <%= f.label :password %></br>
+    <%= f.password_field :password, placeholder: "Enter your password" %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+  <p>
+    <%= link_to "Cancel and return to article list", articles_path %>
+  </p>
+<% end %>
