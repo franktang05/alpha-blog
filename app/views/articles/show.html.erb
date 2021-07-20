@@ -1,5 +1,14 @@
 <h1> Show article details </h1>
-<p>by <%= @article.user.username if @article.user %></p>
+
+<% if @article.user %>
+  <p>
+    by <%= link_to @article.user.username, user_path(@article.user) %>
+  </p>
+  <p>
+    <%= gravatar_for @article.user, size: 30 %>
+  </p>
+<% end %>
+
 <p><strong> Title: </strong><%= @article.title %> </p>
 <p><strong> Description: </strong><%= @article.description %></p>
 

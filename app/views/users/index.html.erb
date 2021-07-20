@@ -1,0 +1,28 @@
+<h1 class="text-center mt-4">Alpha Blog</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> Username </th>
+      <th> Profile Image </th>
+      <th colspan=4> Actions </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>by <%= link_to user.username, user %>|    |</td>
+        <td><%= link_to gravatar_for(user, size: 80), user %></td>
+        <td><%= pluralize(user.articles.count, "article") %></td>
+        <td><%= link_to 'View profile', user %></td>
+        <td><%= link_to 'Edit profile', edit_user_path(user) %></td>
+        <td>Joined <%= time_ago_in_words(user.created_at) %> ago </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Create new article', new_article_path %>
+</p>
