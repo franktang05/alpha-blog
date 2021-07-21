@@ -12,11 +12,13 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td>by <%= link_to user.username, user %>|    |</td>
+        <td> <%= link_to user.username, user %>|    |</td>
         <td><%= link_to gravatar_for(user, size: 80), user %></td>
         <td><%= pluralize(user.articles.count, "article") %></td>
         <td><%= link_to 'View profile', user %></td>
-        <td><%= link_to 'Edit profile', edit_user_path(user) %></td>
+        <% if logged_in? && user == current_user %>
+          <td><%= link_to 'Edit profile', edit_user_path(user) %></td>
+        <% end %>
         <td>Joined <%= time_ago_in_words(user.created_at) %> ago </td>
       </tr>
     <% end %>

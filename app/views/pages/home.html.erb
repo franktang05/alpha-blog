@@ -8,3 +8,13 @@
 <p>
   <%= link_to "Sign up!", signup_path, class: "btn btn-success btn-lg" %>
 </p>
+
+<% if logged_in? %>
+  <p>
+    <%= button_to 'Log out!', logout_path, method: :delete, class: "btn btn-success btn-lg" %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to "Log in!", login_path, class: "btn btn-success btn-lg" %>
+  </p>
+<% end %>
