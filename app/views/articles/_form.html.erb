@@ -20,6 +20,12 @@
   </p>
 
   <p>
+    <%= f.label :category %></br>
+    <%= f.collection_select(:category_ids, Category.all, :id, :name,
+        {prompt: "Please select categories"}, {multiple: true, size: 10, class: "custom-select shadow rounded"}) %>
+  </p>
+
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

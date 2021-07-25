@@ -11,6 +11,7 @@
   <thead>
     <tr>
       <th> Name </th>
+      <th> Articles count </th>
       <th> Created at </th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
       <tr>
         <% if category.name %>
           <td><%= link_to category.name, category_path(category) %> |   |</td>
+          <td><%= pluralize(category.articles.count, "article") %></td>
           <td>Created <%= time_ago_in_words(category.created_at) %> </td>
         <% end %>
       </tr>

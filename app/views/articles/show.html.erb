@@ -6,6 +6,9 @@
   </p>
   <p>
     <%= gravatar_for @article.user, size: 30 %>
+    <% if @article.categories.any? %>
+      <div class="mt-2"><%= render @article.categories %></div>
+    <% end %>
   </p>
 <% end %>
 

@@ -13,6 +13,9 @@
         <% if article.user %>
           <td>by <%= link_to article.user.username, user_path(article.user) %> |   |</td>
         <% end %>
+        <% if article.categories.any? %>
+          <td><%= render article.categories %></td>
+        <% end %>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
         
